@@ -54,7 +54,7 @@ class App {
     }
   
     init() {
-      let worldImgs = this.imgs.map(i => i.asset.url)
+      let worldImgs = this.imgs.length > 0 ? this.imgs.map(i => i.asset.url) : []
       let imgDivide = 10
       this.worldManagers = {
         cityManager : new CityManager(),

@@ -8,5 +8,5 @@ module.exports.getWorld = async(req, res) => {
             }
         }
     }`)
-    return res.render("memolia", {userDoc: JSON.stringify(userDoc[0].images)})
+    return res.render("memolia", {userDoc: JSON.stringify(userDoc[0] ? userDoc[0].images : [])})
 }
