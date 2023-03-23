@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/imgs/images.png" type="image/x-icon">
+    <meta name="discription" content="This is a website made by Nhân Nguyễn.">
+    <!-- google -->
+    <meta itemprop="name" content="We world">
+    <meta itemprop="discription" content="This is a website made by Nhân Nguyễn.">
+    <meta itemprop="image" content="/assets/imgs/images.png">
+    <!-- fb -->
+    <meta property="og:type" content="Website">
+    <meta property="og:title" content="We world">
+    <meta property="og:discription" content="This is a website made by Nhân Nguyễn.">
+    <meta property="og:image" content="/assets/imgs/images.png">
+    <title>we world</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+        
+        .scene, canvas {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <canvas id="scene"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/opentype.js@latest/dist/opentype.min.js"></script>
+    <script src="/assets/js/three.min.js"></script>
+    <script src="/assets/js/TTFLoader.js"></script>
+    <script src="/assets/js/OrbitControl.js"></script>
+    <script src="/assets/js/GeometryUtils.js"></script>
+    <script src="/assets/js/GLTFLoader.js"></script>
+    
+    <script src="/assets/js/Capsule.js"></script>
+    <script src="/assets/js/Octree.js"></script>
+    <script src="/src/player.js"></script>
+    <script src="/src/imgManager.js"></script>
+    <script src="/src/classes/physicObject.js"></script>
+    <script src="/src/classes/animatorManage.js"></script>
+    <script src="/src/cityManager.js"></script>
+    <script src="/src/world.js"></script>
+    <script src="/src/index.js"></script>
+    <script>
+        let imgs = '<%-locals.userDoc%>'
+        new App({imgs}).init()
+    </script>
+</body>
+</html>
