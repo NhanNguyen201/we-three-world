@@ -55,7 +55,8 @@ class App {
   
     init() {
       let worldImgs = this.imgs.length > 0 ? this.imgs.map(i => i.asset.url) : []
-      let imgDivide = 10
+      let imgPerRound = 10
+      let imgPerFloor = 20
       this.worldManagers = {
         cityManager : new CityManager(),
         animatorManager : new AnimatorManager(),
@@ -68,7 +69,8 @@ class App {
         managers: this.worldManagers,
         octree: this.octree,
         worldImgs,
-        imgDivide
+        imgPerRound,
+        imgPerFloor
       })
       this.world.init()
       this.scene.add(this.world.group)

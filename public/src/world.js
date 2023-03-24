@@ -1,11 +1,12 @@
 class World {
-    constructor({ managers, octree, worldImgs, imgDivide}) {
+    constructor({ managers, octree, worldImgs, imgPerRound, imgPerFloor}) {
         
         this.loader  = new THREE.GLTFLoader()
         this.octree = octree
         this.managers = managers
         this.worldImgs = worldImgs
-        this.imgDivide = imgDivide
+        this.imgPerRound = imgPerRound
+        this.imgPerFloor = imgPerFloor
         this.worldImgMeshs = []
         this.group = new THREE.Group()
     }
@@ -64,14 +65,14 @@ class World {
             let statueImage = new StatueImage({
                 texture:  texture.texture,
                 position: {
-                    x: (4 + 3 * Math.floor(i / this.imgDivide)) * Math.sin((i+ Math.floor(i / this.imgDivide) / 2) * Math.PI / 5 ), 
-                    y: 0, 
-                    z: (4 + 3 * Math.floor(i / this.imgDivide)) * Math.cos((i+ Math.floor(i / this.imgDivide) / 2) * Math.PI / 5 )
+                    x: (4 + 1 * Math.floor(i / this.imgPerFloor) + 3 * Math.floor((i % this.imgPerFloor) / this.imgPerRound)) * Math.sin(((i % this.imgPerRound) + Math.floor(i / this.imgPerRound) / 2) * Math.PI / 5  + Math.floor(i / this.imgPerFloor) * Math.PI /10), 
+                    y: 2 * Math.floor(i / this.imgPerFloor), 
+                    z: (4 + 1 * Math.floor(i / this.imgPerFloor) + 3 * Math.floor((i % this.imgPerFloor) / this.imgPerRound)) * Math.cos(((i % this.imgPerRound) + Math.floor(i / this.imgPerRound) / 2) * Math.PI / 5 + Math.floor(i / this.imgPerFloor) * Math.PI /10)
                 },
                 rotation: {
-                    y: (i+ Math.floor(i / this.imgDivide) / 2) * Math.PI / 5  + Math.PI , 
+                    y: ((i % this.imgPerRound) + Math.floor(i / this.imgPerRound) / 2) * Math.PI / 5 + Math.floor(i / this.imgPerFloor) * Math.PI /10 + Math.PI , 
                 },
-                opacityDelay: i
+                opacityDelay: (i % this.imgPerRound)
             })
             this.octree.fromBasicNode(statueImage.boxMesh)
             this.octree.fromBasicNode(statueImage.bottomBoxMesh)

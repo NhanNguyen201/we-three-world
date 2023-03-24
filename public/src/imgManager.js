@@ -33,7 +33,6 @@ class StatueImage {
         this.position = position
         this.rotation = rotation
         this.group = new THREE.Group()
-        this.bordersPoints = []
         this.opacityDelay = opacityDelay
         this.imageSize = {
             width: 0.7,
@@ -67,7 +66,7 @@ class StatueImage {
             new THREE.BoxGeometry( 2 * this.borderSize.range * Math.sin( Math.PI / 2 + Math.PI / 4), 0.125, 2 * this.borderSize.range * Math.sin( Math.PI / 2 + Math.PI / 4)),
             new THREE.MeshPhongMaterial({
                 transparent: false,
-                opacity: 0.8,
+                opacity: 0.9,
                 color: new THREE.Color(0xffe7e6)
             })
         )
@@ -81,24 +80,6 @@ class StatueImage {
         this.group.add(this.boxMesh)
         this.bottomBoxMesh.position.y = 0.6
         this.group.add(this.bottomBoxMesh)
-        for(let i =0; i < 4; i++){
-            this.bordersPoints.push(
-                new THREE.Vector3( 0, 0.3, 0 ),
-                new THREE.Vector3( this.borderSize.range * Math.sin(i* Math.PI / 2 + Math.PI / 4), 0.3, this.borderSize.range * Math.cos(i* Math.PI / 2 + Math.PI / 4)),
-                new THREE.Vector3( this.borderSize.range * Math.sin(i* Math.PI / 2+ Math.PI / 4), this.borderSize.height + .31, this.borderSize.range * Math.cos(i* Math.PI / 2+ Math.PI / 4)),
-                new THREE.Vector3( this.borderSize.range * Math.sin(i* Math.PI / 2+ Math.PI / 4), 0.3, this.borderSize.range * Math.cos(i* Math.PI / 2+ Math.PI / 4)),
-                new THREE.Vector3( 0, 0.3, 0 ),
-            )
-        }
-
-        this.borderLine = new THREE.Line( 
-            new THREE.BufferGeometry().setFromPoints( this.bordersPoints ),
-            new THREE.LineBasicMaterial({
-                color: new THREE.Color('white')
-            }) 
-        )
-        this.borderLine.position.y = 0.24
-        this.group.add(this.borderLine)
     }
     animate(){
         this.image.rotation.y += 0.01
