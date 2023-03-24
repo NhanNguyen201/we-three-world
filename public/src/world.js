@@ -62,15 +62,17 @@ class World {
     handleImage() {
         for(let i = 0; i < this.worldImgs.length; i++) {
             const texture =  this.managers.imgManager.loadImage(this.worldImgs[i]) 
+            let range = (4 + 1 * Math.floor(i / this.imgPerFloor) + 3 * Math.floor((i % this.imgPerFloor) / this.imgPerRound))
+            let angle = ((i % this.imgPerRound) + Math.floor(i / this.imgPerRound) / 2 ) * Math.PI / (this.imgPerRound / 2)  + (Math.floor(i / this.imgPerFloor) * Math.PI /(this.imgPerRound * 2))
             let statueImage = new StatueImage({
                 texture:  texture.texture,
                 position: {
-                    x: (4 + 1 * Math.floor(i / this.imgPerFloor) + 3 * Math.floor((i % this.imgPerFloor) / this.imgPerRound)) * Math.sin(((i % this.imgPerRound) + Math.floor(i / this.imgPerRound) / 2) * Math.PI / 5  + Math.floor(i / this.imgPerFloor) * Math.PI /10), 
+                    x: range * Math.sin(angle), 
                     y: 2 * Math.floor(i / this.imgPerFloor), 
-                    z: (4 + 1 * Math.floor(i / this.imgPerFloor) + 3 * Math.floor((i % this.imgPerFloor) / this.imgPerRound)) * Math.cos(((i % this.imgPerRound) + Math.floor(i / this.imgPerRound) / 2) * Math.PI / 5 + Math.floor(i / this.imgPerFloor) * Math.PI /10)
+                    z: range * Math.cos(angle)
                 },
                 rotation: {
-                    y: ((i % this.imgPerRound) + Math.floor(i / this.imgPerRound) / 2) * Math.PI / 5 + Math.floor(i / this.imgPerFloor) * Math.PI /10 + Math.PI , 
+                    y: angle
                 },
                 opacityDelay: (i % this.imgPerRound)
             })

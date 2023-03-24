@@ -55,8 +55,8 @@ class App {
   
     init() {
       let worldImgs = this.imgs.length > 0 ? this.imgs.map(i => i.asset.url) : []
-      let imgPerRound = 10
-      let imgPerFloor = 20
+      let imgPerRound = 6
+      let imgPerFloor = 12
       this.worldManagers = {
         cityManager : new CityManager(),
         animatorManager : new AnimatorManager(),
