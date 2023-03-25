@@ -1,9 +1,11 @@
 class Player {
-    constructor({camera, gravity, octree, originalPos}) {
+    constructor({camera, gravity, octree, originalPos, joystick}) {
             this.camera = camera
             this.gravity = gravity
             this.octree = octree
             this.originalPos = originalPos
+            this.joystick = joystick
+
 			this.playerCollider = new THREE.Capsule( 
                 new THREE.Vector3( this.originalPos.x, this.originalPos.y + 1.5, this.originalPos.z ), 
                 new THREE.Vector3( this.originalPos.x, this.originalPos.y + 2, this.originalPos.z ), 
@@ -42,27 +44,27 @@ class Player {
 
         const speedDelta = deltaTime * ( this.playerOnFloor ? 8 : 3 );
 
-        if ( this.keyStates[ 'KeyW' ] ) {
+        if ( this.keyStates[ 'KeyW' ] || ( this.joystick && this.joystick.getDirection().fwdValue > 0)) {
 
-            this.playerVelocity.add( this.getForwardVector().multiplyScalar( speedDelta ) );
-
-        }
-
-        if ( this.keyStates[ 'KeyS' ] ) {
-
-            this.playerVelocity.add( this.getForwardVector().multiplyScalar( - speedDelta ) );
+            this.playerVelocity.add( this.getForwardVector().multiplyScalar(speedDelta *  ((this.joystick && this.joystick?.getDirection().fwdValue) || 1)) );
 
         }
 
-        if ( this.keyStates[ 'KeyA' ] ) {
-            this.playerVisions.x += 0.0075
-            this.playerVisions.z += 0.0075 
+        if ( this.keyStates[ 'KeyS' ] || (this.joystick && this.joystick.getDirection().bkdValue > 0) ) {
+
+            this.playerVelocity.add( this.getForwardVector().multiplyScalar(-speedDelta * ((this.joystick && this.joystick?.getDirection().bkdValue) || 1))  );
+
         }
 
-        if ( this.keyStates[ 'KeyD' ] ) {
+        if ( this.keyStates[ 'KeyA' ] || (this.joystick && this.joystick.getDirection().lftValue > 0)) {
+            this.playerVisions.x += 0.0075 * ((this.joystick && this.joystick?.getDirection().lftValue) || 1) 
+            this.playerVisions.z += 0.0075 * ((this.joystick && this.joystick?.getDirection().lftValue) || 1)
+        }
 
-            this.playerVisions.x -= 0.0075
-            this.playerVisions.z -= 0.0075 
+        if ( this.keyStates[ 'KeyD' ] || (this.joystick && this.joystick?.getDirection().rgtValue > 0)) {
+
+            this.playerVisions.x -= 0.0075 * ((this.joystick && this.joystick?.getDirection().rgtValue) || 1)
+            this.playerVisions.z -= 0.0075 * ((this.joystick && this.joystick?.getDirection().rgtValue) || 1) 
         }
 
         if ( this.keyStates[ 'KeyQ' ] ) {

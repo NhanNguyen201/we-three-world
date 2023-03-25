@@ -43,6 +43,7 @@ class App {
       this.clock = new THREE.Clock();
   
       this.setting = {
+        joystick: false,
         GRAVITY: 15,
         STEPS_PER_FRAME: 5,
         mapDev: false
@@ -53,14 +54,21 @@ class App {
       this.onResize();
     }
   
-    init() {
+    init({isMobile}) {
       let worldImgs = this.imgs.length > 0 ? this.imgs.map(i => i.asset.url) : []
       let imgPerRound = 6
       let imgPerFloor = 12
+      if(!isMobile) {
+        document.getElementById('mobileInterface').style.display = "none"
+      } else {
+        this.setting.joystick = new JoyStick({dom: document.getElementById('joystickWrapper1')})
+        this.setting.joystick.addEvent()
+      }
       this.worldManagers = {
         cityManager : new CityManager(),
         animatorManager : new AnimatorManager(),
-        imgManager: new ImageManager()
+        imgManager: new ImageManager(),
+        joystickManager: this.setting.joystick
       }
       this.octree = new THREE.Octree()
 
@@ -79,7 +87,9 @@ class App {
         originalPos: {x: 1, y: 3, z: 1},
         camera: this.camera,
         gravity: this.setting.GRAVITY,
-        octree: this.octree
+        octree: this.octree,
+        joystick: this.worldManagers.joystickManager
+
       })
       this.addEvents();
     }

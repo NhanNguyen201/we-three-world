@@ -24,6 +24,8 @@
         }
         
         body {
+            height: 100vh;
+            width: 100vw;
             font-family: sans-serif;
             overflow: hidden;
         }
@@ -33,12 +35,40 @@
             height: 100%;
             width: 100%;
         }
-        
+        #mobileInterface {
+            position: absolute;
+            width: 100%;
+            height: 120px;
+
+            pointer-events: none;
+            z-index: 11;
+            top: calc(100% - 120px);
+            left: 0;
+            touch-action: manipulation;
+            
+        }
+        #joystickWrapper1 {
+            pointer-events: auto;
+            display: block;
+            position: absolute;
+            left: calc(50% - 60px);
+            background-color: transparent;
+           
+            transform: translateY(-50%);
+
+            z-index: 12;
+            touch-action: manipulation;
+        }
     </style>
 </head>
 <body>
     <canvas id="scene"></canvas>
+    <div id="mobileInterface" class="noSelect">
+        <div id="joystickWrapper1"></div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/opentype.js@latest/dist/opentype.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.9.0/nipplejs.js"></script>
+
     <script src="/assets/js/three.min.js"></script>
     <script src="/assets/js/TTFLoader.js"></script>
     <script src="/assets/js/OrbitControl.js"></script>
@@ -52,11 +82,14 @@
     <script src="/src/classes/physicObject.js"></script>
     <script src="/src/classes/animatorManage.js"></script>
     <script src="/src/cityManager.js"></script>
+    <script src="/src/classes/joystick.js"></script>
     <script src="/src/world.js"></script>
     <script src="/src/index.js"></script>
     <script>
         let imgs = '<%-locals.userDoc%>'
-        new App({imgs}).init()
+        let deviceRegexp = /android|iphone|kindle|ipad/i;
+        let isMobileDevice = deviceRegexp.test(navigator.userAgent);
+        new App({imgs}).init({isMobile: isMobileDevice})
     </script>
 </body>
 </html>
