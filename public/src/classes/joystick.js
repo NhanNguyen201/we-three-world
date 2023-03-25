@@ -13,10 +13,10 @@ class JoyStick {
             dynamicPage: true,
         })
         this.joyDirection = {
-            fwdValue: 0,
-            bkdValue: 0,
-            lftValue:0, 
-            rgtValue:0
+            forward: 0,
+            backward: 0,
+            left:0, 
+            right:0
         }
     }
     addEvent(){
@@ -25,26 +25,26 @@ class JoyStick {
             const turn = data.vector.x
             
             if (forward > 0) {
-              this.joyDirection.fwdValue = Math.abs(forward)
-              this.joyDirection.bkdValue = 0
+              this.joyDirection.forward = Math.abs(forward)
+              this.joyDirection.backward = 0
             } else if (forward < 0) {
-                this.joyDirection.fwdValue = 0
-                this.joyDirection.bkdValue = Math.abs(forward)
+                this.joyDirection.forward = 0
+                this.joyDirection.backward = Math.abs(forward)
             }
     
             if (turn > 0) {
-                this.joyDirection.lftValue = 0
-                this.joyDirection.rgtValue = Math.abs(turn)
+                this.joyDirection.left = 0
+                this.joyDirection.right = Math.abs(turn)
             } else if (turn < 0) {
-                this.joyDirection.lftValue = Math.abs(turn)
-                this.joyDirection.rgtValue = 0
+                this.joyDirection.left = Math.abs(turn)
+                this.joyDirection.right = 0
             }
         })
         this.joystick['0'].on('end',  (evt) => {
-            this.joyDirection.bkdValue = 0
-            this.joyDirection.fwdValue = 0
-            this.joyDirection.lftValue = 0
-            this.joyDirection.rgtValue = 0
+            this.joyDirection.backward = 0
+            this.joyDirection.forward = 0
+            this.joyDirection.left = 0
+            this.joyDirection.right = 0
          })
     }
     getDirection(){

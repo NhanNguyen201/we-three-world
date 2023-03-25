@@ -44,27 +44,25 @@ class Player {
 
         const speedDelta = deltaTime * ( this.playerOnFloor ? 8 : 3 );
 
-        if ( this.keyStates[ 'KeyW' ] || ( this.joystick && this.joystick.getDirection().fwdValue > 0)) {
+        if ( this.keyStates[ 'KeyW' ] || ( this.joystick && this.joystick.getDirection().forward > 0)) {
 
-            this.playerVelocity.add( this.getForwardVector().multiplyScalar(speedDelta *  ((this.joystick && this.joystick?.getDirection().fwdValue) || 1)) );
-
-        }
-
-        if ( this.keyStates[ 'KeyS' ] || (this.joystick && this.joystick.getDirection().bkdValue > 0) ) {
-
-            this.playerVelocity.add( this.getForwardVector().multiplyScalar(-speedDelta * ((this.joystick && this.joystick?.getDirection().bkdValue) || 1))  );
+            this.playerVelocity.add( this.getForwardVector().multiplyScalar(speedDelta *  ((this.joystick && this.joystick?.getDirection().forward) || 1)) );
 
         }
 
-        if ( this.keyStates[ 'KeyA' ] || (this.joystick && this.joystick.getDirection().lftValue > 0)) {
-            this.playerVisions.x += 0.0075 * ((this.joystick && this.joystick?.getDirection().lftValue) || 1) 
-            this.playerVisions.z += 0.0075 * ((this.joystick && this.joystick?.getDirection().lftValue) || 1)
+        if ( this.keyStates[ 'KeyS' ] || (this.joystick && this.joystick.getDirection().backward > 0) ) {
+
+            this.playerVelocity.add( this.getForwardVector().multiplyScalar(-speedDelta * ((this.joystick && this.joystick?.getDirection().backward) || 1))  );
+
         }
 
-        if ( this.keyStates[ 'KeyD' ] || (this.joystick && this.joystick?.getDirection().rgtValue > 0)) {
+        if ( this.keyStates[ 'KeyA' ] || (this.joystick && this.joystick.getDirection().left > 0)) {
+            this.playerVisions.x += 0.0075 * ((this.joystick && this.joystick?.getDirection().left) || 1) 
+        }
 
-            this.playerVisions.x -= 0.0075 * ((this.joystick && this.joystick?.getDirection().rgtValue) || 1)
-            this.playerVisions.z -= 0.0075 * ((this.joystick && this.joystick?.getDirection().rgtValue) || 1) 
+        if ( this.keyStates[ 'KeyD' ] || (this.joystick && this.joystick?.getDirection().right > 0)) {
+
+            this.playerVisions.x -= 0.0075 * ((this.joystick && this.joystick?.getDirection().right) || 1)
         }
 
         if ( this.keyStates[ 'KeyQ' ] ) {
@@ -109,7 +107,7 @@ class Player {
         let dir = new THREE.Vector3(
             Math.sin(this.playerVisions.x), 
             Math.sin(this.playerVisions.y) * 0.5, 
-            Math.cos(this.playerVisions.z)
+            Math.cos(this.playerVisions.x)
         ).normalize()
         // console.log(this.playerCollider.end + dir)
         let cameraLookAt = new THREE.Vector3(this.playerCollider.end.x + dir.x, this.playerCollider.end.y + dir.y, this.playerCollider.end.z + dir.z)
