@@ -84,6 +84,6 @@ class StatueImage {
     animate(){
         this.image.rotation.y += 0.01
         this.image.position.y = this.borderSize.height / 2 + .3 + .25 + .1 * Math.sin(new Date() * 0.001 + this.opacityDelay * Math.PI / 2)
-        this.boxMesh.material.opacity = 0.5 * Math.pow(Math.sin(new Date() * 0.001 + this.opacityDelay * Math.PI / 2), 2)
+        this.boxMesh.material.opacity = 0.35 * Math.pow(Math.sin(new Date() * 0.001 + this.opacityDelay * Math.PI / 2), 2)
     }
 }
