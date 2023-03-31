@@ -19,6 +19,14 @@ class Player {
 			this.keyStates = {};
 			
             this.playerVisions = new THREE.Vector3(0,0, 0);
+            this.numbs = {
+                deltaSpeed: {
+                    air: 3,
+                    ground: 8
+                },
+                jumpForce : 8,
+                
+            }
     }
     getForwardVector() {
 
@@ -42,7 +50,8 @@ class Player {
     }
     controls( deltaTime ) {
 
-        const speedDelta = deltaTime * ( this.playerOnFloor ? 8 : 3 );
+        const speedDelta = deltaTime * ( this.playerOnFloor ? this.numbs.deltaSpeed.ground : this.numbs.deltaSpeed.air );
+
 
         if ( this.keyStates[ 'KeyW' ] || ( this.joystick && this.joystick.getDirection().forward > 0)) {
 
@@ -76,7 +85,8 @@ class Player {
 
             if ( this.keyStates[ 'Space' ] ) {
 
-                this.playerVelocity.y = 5;
+                this.playerVelocity.y = this.numbs.jumpForce;
+
 
             }
 

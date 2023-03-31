@@ -62,7 +62,7 @@ class World {
     handleImage() {
         for(let i = 0; i < this.worldImgs.length; i++) {
             const texture =  this.managers.imgManager.loadImage(this.worldImgs[i]) 
-            let range = (4 + 1 * Math.floor(i / this.imgPerFloor) + 3 * Math.floor((i % this.imgPerFloor) / this.imgPerRound))
+            let range = (i / this.imgPerFloor < 3) ? (4 + 1 * Math.floor(i / this.imgPerFloor) + 3 * Math.floor((i % this.imgPerFloor) / this.imgPerRound)) : 9
             let angle = ((i % this.imgPerRound) + Math.floor(i / this.imgPerRound) / 2 ) * Math.PI / (this.imgPerRound / 2)  + (Math.floor(i / this.imgPerFloor) * Math.PI /(this.imgPerRound * 2))
             let statueImage = new StatueImage({
                 texture:  texture.texture,
@@ -81,7 +81,31 @@ class World {
             this.group.add(statueImage.group)
             this.managers.animatorManager.addAnimation(() => statueImage.animate())
         }
-        
+        let welcomeMesh = new THREE.Mesh(
+            new THREE.PlaneGeometry(1920 / 1080 * 3, 1080 / 1080 * 3 ),
+            new THREE.MeshBasicMaterial( { 
+                map: this.managers.imgManager.loadImage("/assets/imgs/welcome.png").texture , 
+                side: THREE.DoubleSide
+            } )
+        )
+        welcomeMesh.position.x = 0
+        welcomeMesh.position.y = 2.5
+        welcomeMesh.position.z = 11.93
+        welcomeMesh.rotation.y = Math.PI
+        this.group.add(welcomeMesh)
+        let glassCover = new THREE.Mesh(
+            new THREE.BoxGeometry( 1920 / 1080 * 3 + 0.1 , 1080 / 1080 * 3 + 0.1),
+            new THREE.MeshPhongMaterial({
+                transparent: true,
+                opacity: 0.3,
+                color: new THREE.Color(0xffe7e6)
+            })
+        )
+        glassCover.position.copy(welcomeMesh.position)
+        glassCover.scale.z = 0.2
+        glassCover.rotation.copy(welcomeMesh.rotation)
+        this.octree.fromBasicNode(glassCover)
+        this.group.add(glassCover)
 
     }
 }

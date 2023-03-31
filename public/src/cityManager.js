@@ -18,91 +18,8 @@ class CityManager {
         }
        
         this.meshMap = [
-            { 
-                name: this.nameMap['soil'],
-                position: {
-                    x: 0, y: 0, z: 0
-                },
-                rotation: {
-                    x: 0, y: 0, z: 0
-                },
-                scale: {
-                    x: 6, y: 0.5 , z: 6
-                }
-            },
-            { 
-                name: this.nameMap['darkGreenGrass'],
-                position: {
-                    x: 0, y: 0.5, z: 0
-                },
-                rotation: {
-                    x: 0, y: 0, z: 0
-                },
-                scale: {
-                    x: 6, y: 0.5 , z: 6
-                }
-            },
-            { 
-                name: this.nameMap['lightGreenGrass'],
-                position: {
-                    x: 0, y: 0.5, z: 0
-                },
-                rotation: {
-                    x: 0, y: 0, z: 0
-                },
-                scale: {
-                    x: 6, y: 0.5 , z: 6
-                }
-            },
-            // wall
-            { 
-                name: this.nameMap['soil'],
-                position: {
-                    x: -13, y: 1, z: 0
-                },
-                rotation: {
-                    x: 0, y: 0, z: 0
-                },
-                scale: {
-                    x: 1, y: 5 , z: 7
-                }
-            },
-            { 
-                name: this.nameMap['soil'],
-                position: {
-                    x: 0, y: 1, z: 13
-                },
-                rotation: {
-                    x: 0, y: 0, z: 0
-                },
-                scale: {
-                    x: 7, y: 5, z: 1
-                }
-            },
-            { 
-                name: this.nameMap['soil'],
-                position: {
-                    x: 0, y: 1, z: -13
-                },
-                rotation: {
-                    x: 0, y: 0, z: 0
-                },
-                scale: {
-                    x: 7, y: 5 , z: 1
-                }
-            },
-            { 
-                name: this.nameMap['soil'],
-                position: {
-                    x: 13, y: 1, z: 0
-                },
-                rotation: {
-                    x: 0, y: 0, z: 0
-                },
-                scale: {
-                    x: 1, y: 5 , z: 7
-                }
-            },
+            
+            // animated
             // { 
             //     name: this.nameMap['coin'],
             //     position: {
@@ -118,6 +35,115 @@ class CityManager {
             //         mesh.position.y = 3 + Math.sin(new Date() * 0.001) 
             //     }
             // },
+            { 
+                name: this.nameMap['soil'],
+                position: {
+                    x: 0, y: 0, z: 0
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 7, y: 0.5 , z: 7
+                }
+            },
+            { 
+                name: this.nameMap['darkGreenGrass'],
+                position: {
+                    x: 0, y: 0.5, z: 0
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 7, y: 0.5 , z: 7
+                }
+            },
+            { 
+                name: this.nameMap['lightGreenGrass'],
+                position: {
+                    x: 0, y: 0.5, z: 0
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 7, y: 0.5 , z: 7
+                }
+            },
+            // wall
+            { 
+                name: this.nameMap['soil'],
+                position: {
+                    x: -13, y: 3, z: 0
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 0.5, y: 10 , z: 7
+                }
+            },
+            { 
+                name: this.nameMap['soil'],
+                position: {
+                    x: 0, y: 3, z: 13
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 7, y: 10, z: 0.5
+                }
+            },
+            { 
+                name: this.nameMap['soil'],
+                position: {
+                    x: 0, y: 3, z: -13
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 7, y: 10 , z: 0.5
+                }
+            },
+            { 
+                name: this.nameMap['soil'],
+                position: {
+                    x: 13, y: 3, z: 0
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 0.5, y: 10 , z: 7
+                }
+            },
+            { 
+                name: this.nameMap['guard'],
+                position: {
+                    x: 4, y: 1, z: 11.95
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 1, y: 1 , z: 1
+                }
+            },
+            { 
+                name: this.nameMap['guard'],
+                position: {
+                    x: -4, y: 1, z: 11.95
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 1, y: 1 , z: 1
+                }
+            },
         ]
     }
 
