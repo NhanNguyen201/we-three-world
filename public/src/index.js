@@ -12,29 +12,27 @@ class App {
         0.001, 
         100000000
       );
-      var ambientLight = new THREE.AmbientLight(0x999999 );
+      let ambientLight = new THREE.AmbientLight(0x999999 );
       this.scene.add(ambientLight);
-      var lights = [];
-      lights[0] = new THREE.DirectionalLight( 0xffffff, 1 );
-      lights[0].position.set( 5, 0, 0 );
-      lights[1] = new THREE.DirectionalLight( 0x11E8BB, 1 );
-      lights[1].position.set( 0.75, 3, 0.5 );
-      lights[2] = new THREE.DirectionalLight( 0x8200C9, 1 );
-      lights[2].position.set( -0.75, 3, 0.5 );
-      this.scene.add( lights[0] );
+      let lights = [];
+      lights[0] = new THREE.DirectionalLight( 0xffffff, 0.7 );
+      lights[0].position.set( -2, 6, -4 );
+      lights[1] = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+      lights[1].position.set( -5, 2, -10 );
+      lights[2] = new THREE.SpotLight( 0xffffff, 0.9, 60, Math.PI / 4 )
+      lights[2].position.set(0, 12, -15)
+      let target = new THREE.Object3D()
+      target.position.set(0,3, 12)
+      lights[2].target = target
+      this.scene.add(target)
+      // this.scene.add( lights[0] );
       this.scene.add( lights[1] );
-      this.scene.add( lights[2] );
-        
-      this.camera.position.z = 50;
-      this.camera.position.y = 20;
-      this.camera.position.x = 50;
-
+      this.scene.add( lights[2] )
       this.renderer = new THREE.WebGLRenderer({
         canvas: document.querySelector("#scene"),
         antialias: true
       });
       this.renderer.setSize(window.innerWidth, window.innerHeight);
-      this.renderer.shadowMap.enabled = true;
       
       this.renderer.setClearColor(0x000000, 1);
 
