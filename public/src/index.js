@@ -43,7 +43,7 @@ class App {
       this.setting = {
         joystick: false,
         GRAVITY: 15,
-        STEPS_PER_FRAME: 5,
+        STEPS_PER_FRAME: 3,
         mapDev: false
       }
       if(this.setting.mapDev) {
@@ -108,6 +108,24 @@ class App {
 				this.player.keyStates[ event.code ] = false;
 
 			} );
+      document.getElementById("up").addEventListener("pointerdown", e => {
+        this.player.keyStates['up'] = true;
+      })
+      document.getElementById("up").addEventListener("pointerup", e => {
+        this.player.keyStates['up'] = false;
+      })
+      document.getElementById("down").addEventListener("pointerdown", e => {
+        this.player.keyStates['down'] = true;
+      })
+      document.getElementById("down").addEventListener("pointerup", e => {
+        this.player.keyStates['down'] = false;
+      })
+      document.getElementById("JumpB").addEventListener("pointerdown", e => {
+        this.player.keyStates['jump'] = true;
+      })
+      document.getElementById("JumpB").addEventListener("pointerup", e => {
+        this.player.keyStates['jump'] = false;
+      })
     }
   
     run() {

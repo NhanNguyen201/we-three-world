@@ -48,6 +48,10 @@ class Player {
         return this.playerDirection;
 
     }
+    lookUpDown(vel) {
+        this.playerVisions.y += vel
+    }
+   
     controls( deltaTime ) {
 
         const speedDelta = deltaTime * ( this.playerOnFloor ? this.numbs.deltaSpeed.ground : this.numbs.deltaSpeed.air );
@@ -74,16 +78,16 @@ class Player {
             this.playerVisions.x -= 0.0075 * ((this.joystick && this.joystick?.getDirection().right) || 1)
         }
 
-        if ( this.keyStates[ 'KeyQ' ] ) {
-            this.playerVisions.y -= this.playerVisions.y > -0.45 ? 0.005 : 0
+        if ( this.keyStates[ 'KeyQ' ] || this.keyStates[ 'down' ] ) {
+            this.lookUpDown(this.playerVisions.y > -0.45 ? -0.005 : 0)
         }
-        if ( this.keyStates[ 'KeyE' ] ) {
-            this.playerVisions.y += this.playerVisions.y < 0.75 ? 0.005 : 0
+        if ( this.keyStates[ 'KeyE' ] || this.keyStates[ 'up' ]) {
+            this.lookUpDown(this.playerVisions.y < 0.75 ? 0.005 : 0)
         }
 
         if ( this.playerOnFloor ) {
 
-            if ( this.keyStates[ 'Space' ] ) {
+            if ( this.keyStates[ 'Space' ] || this.keyStates[ 'jump' ]) {
 
                 this.playerVelocity.y = this.numbs.jumpForce;
 

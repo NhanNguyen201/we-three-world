@@ -40,12 +40,16 @@
             width: 100%;
             height: 120px;
 
-            pointer-events: none;
+            
             z-index: 11;
             top: calc(100% - 120px);
             left: 0;
-            touch-action: manipulation;
             
+        }
+        #joyWrapper {
+            
+            touch-action: manipulation;
+            pointer-events: none;
         }
         #joystickWrapper1 {
             pointer-events: auto;
@@ -59,12 +63,69 @@
             z-index: 12;
             touch-action: manipulation;
         }
+        #buttonWrapper {
+            height: 75px;
+            width: 100px;
+            position: absolute;
+            top: 50%;
+            left: calc(50% + 70px);
+            transform: translateY(-50%);
+        }
+        
+        #lookDir {
+            height: 100%;
+            width: 50%;
+            top: 0;
+            left: 0;
+            position: absolute;
+        }
+        #up {
+            height: 50%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            clip-path: polygon(51% 20%, 20% 75%, 80% 75%);
+            background-color: black;
+        }
+        #down {
+            height: 50%;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            clip-path: polygon(50% 75%, 20% 25%, 79% 25%);
+            background-color: black;
+        }
+        #JumpB {
+            height: 100%;
+            width: 50%;
+            top: 0;
+            left: 50%;
+            position: absolute;
+            text-align: center;
+            padding-top: 20px;
+            font-weight: 500;
+            font-size: 24px;
+            background: #dbdbdb;
+            clip-path: polygon(20% 10%, 80% 10%, 100% 20%, 100% 80%, 80% 90%, 20% 90%, 0% 80%, 0 20%);
+
+        }
     </style>
 </head>
 <body>
     <canvas id="scene"></canvas>
     <div id="mobileInterface" class="noSelect">
-        <div id="joystickWrapper1"></div>
+        <div id="joyWrapper">
+            <div id="joystickWrapper1"></div>
+        </div>
+        <div id="buttonWrapper">
+            <div id="lookDir">
+                <div id="up"></div>
+                <div id="down"></div>
+            </div>
+            <div id="JumpB">J</div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/opentype.js@latest/dist/opentype.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.9.0/nipplejs.js"></script>
