@@ -26,8 +26,8 @@ class World {
 
             this.managers.cityManager.meshMap.forEach(meshObj => {
                 let mesh = new THREE.Mesh(
-                    this.managers.cityManager.geos[meshObj.name].clone(),
-                    this.managers.cityManager.mats[meshObj.name].clone()
+                    this.managers.cityManager.geos[meshObj.name],
+                    this.managers.cityManager.mats[meshObj.name]
                 )
                 if(meshObj.animation) {
 
