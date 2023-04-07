@@ -56,9 +56,8 @@ class App {
       let worldImgs = this.imgs.length > 0 ? this.imgs.map(i => i.asset.url) : []
       let imgPerRound = 6
       let imgPerFloor = 12
-      if(!isMobile) {
-        document.getElementById('mobileInterface').style.display = "none"
-      } else {
+      if(isMobile) {
+        document.getElementById('mobileInterface').style.display = "block"
         this.setting.joystick = new JoyStick({dom: document.getElementById('joystickWrapper1')})
         this.setting.joystick.addEvent()
       }
