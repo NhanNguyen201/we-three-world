@@ -1,6 +1,7 @@
 class CityManager {
     constructor(){
-        this.meshs = {}
+        this.geos = {}
+        this.mats = {}
         this.nameMap = {
             "darkGreenGrass" : "Cube_Cube001_Material001_0",
             "lightGreenGrass" : "Cube_Cube001_Material002_0",

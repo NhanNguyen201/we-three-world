@@ -18,13 +18,17 @@ class World {
             gltf.scene.traverse( (child) => {
 
                 if ( child.isMesh ) {
-                    this.managers.cityManager.meshs[child.name] = child
+                    this.managers.cityManager.mats[child.name] = child.material
+                    this.managers.cityManager.geos[child.name] = child.geometry
                 }
 
             } );
 
             this.managers.cityManager.meshMap.forEach(meshObj => {
-                let mesh = this.managers.cityManager.meshs[meshObj.name].clone()
+                let mesh = new THREE.Mesh(
+                    this.managers.cityManager.geos[meshObj.name].clone(),
+                    this.managers.cityManager.mats[meshObj.name].clone()
+                )
                 if(meshObj.animation) {
 
                     let meshInst = new AnimateObject({mesh: mesh, animateCallback: () => meshObj.animation(mesh)})
