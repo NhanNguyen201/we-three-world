@@ -145,6 +145,54 @@ class CityManager {
                     x: 1, y: 1 , z: 1
                 }
             },
+            { 
+                name: this.nameMap['boxFaces'],
+                position: {
+                    x: -2.5, y: 1, z: 11.2
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 1, y: 1 , z: 1
+                }
+            },
+            { 
+                name: this.nameMap['boxBorder'],
+                position: {
+                    x: -2.5, y: 1, z: 11.2
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 1, y: 1 , z: 1
+                }
+            },
+            { 
+                name: this.nameMap['boxBorder'],
+                position: {
+                    x: -1.5, y: 0.8, z: 11.4
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 1, y: 0.5 , z: 0.5
+                }
+            },
+            { 
+                name: this.nameMap['boxFaces'],
+                position: {
+                    x: -1.5, y: 0.8, z: 11.4
+                },
+                rotation: {
+                    x: 0, y: 0, z: 0
+                },
+                scale: {
+                    x: 1, y: 0.5 , z: 0.5
+                }
+            },
         ]
     }
 
