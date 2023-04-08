@@ -148,7 +148,7 @@ class CityManager {
             { 
                 name: this.nameMap['boxFaces'],
                 position: {
-                    x: -2.5, y: 1, z: 11.2
+                    x: -2.5, y: 1, z: 11.35
                 },
                 rotation: {
                     x: 0, y: 0, z: 0
@@ -160,7 +160,7 @@ class CityManager {
             { 
                 name: this.nameMap['boxBorder'],
                 position: {
-                    x: -2.5, y: 1, z: 11.2
+                    x: -2.5, y: 1, z: 11.35
                 },
                 rotation: {
                     x: 0, y: 0, z: 0
@@ -172,7 +172,7 @@ class CityManager {
             { 
                 name: this.nameMap['boxBorder'],
                 position: {
-                    x: -1.5, y: 0.8, z: 11.4
+                    x: -1.5, y: 0.8, z: 11.6
                 },
                 rotation: {
                     x: 0, y: 0, z: 0
@@ -184,7 +184,7 @@ class CityManager {
             { 
                 name: this.nameMap['boxFaces'],
                 position: {
-                    x: -1.5, y: 0.8, z: 11.4
+                    x: -1.5, y: 0.8, z: 11.6
                 },
                 rotation: {
                     x: 0, y: 0, z: 0
